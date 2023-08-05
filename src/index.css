@@ -34,21 +34,3 @@ code {
   color: #61dafb;
 }
 
-#outlined-basic {
-  width: 100%;
-}
-.admin-interface {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
-.search-input {
-  margin-bottom: 20px;
-  width: 300px;
-}
-
-.delete-button {
-  margin-top: 20px;
-}

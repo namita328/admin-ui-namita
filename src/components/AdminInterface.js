@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Box, TextField, Button, Fab, Alert, Snackbar } from "@mui/material";
+import {
+  Box,
+  TextField,
+  Button,
+  Fab,
+  Alert,
+  Snackbar,
+  // useMediaQuery,
+} from "@mui/material";
 import UserTable from "./UserTable";
 import AppBar from "./AppBar";
 
@@ -131,12 +139,14 @@ const AdminInterface = () => {
         padding="1rem"
         display="flex"
         justifyContent="space-between"
+        flexWrap="wrap"
       >
         <Button
           variant="contained"
           onClick={handleDeleteSelected}
           color="error"
           disabled={selectedRows.length === 0}
+          style={{ flexShrink: 1, marginBottom: "0.5rem" }}
         >
           Delete Selected
         </Button>
@@ -157,7 +167,6 @@ const AdminInterface = () => {
           >
             {"<"}
           </Fab>
-
           {[...Array(totalPages)].map((_, index) => (
             <Fab
               key={index + 1}
@@ -169,7 +178,6 @@ const AdminInterface = () => {
               {index + 1}
             </Fab>
           ))}
-
           <Fab
             color="primary"
             size="small"

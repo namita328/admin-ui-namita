@@ -79,14 +79,11 @@ const UserTable = ({
   };
 
   return (
-    <TableContainer
-      component={Paper}
-      style={{ maxHeight: "calc(100vh - 200px)", overflow: "auto" }}
-    >
-      <Table style={{ tableLayout: "fixed" }}>
+    <TableContainer component={Paper} style={{ minWidth: 300 }}>
+      <Table className="user-table">
         <TableHead>
           <TableRow>
-            <TableCell padding="checkbox">
+            <TableCell className="user-table-cell name-cell" padding="checkbox">
               <Checkbox
                 indeterminate={
                   selectedRows.length > 0 &&
@@ -103,18 +100,35 @@ const UserTable = ({
               />
             </TableCell>
             {columns.map((column) => (
-              <TableCell key={column.field} style={{ fontWeight: "bold" }}>
+              <TableCell
+                className="user-table-cell name-cell"
+                key={column.field}
+                style={{
+                  fontWeight: "bold",
+                }}
+              >
                 {column.headerName}
               </TableCell>
             ))}
-            <TableCell style={{ fontWeight: "bold" }}>Actions</TableCell>
+            <TableCell
+              className="user-table-cell name-cell"
+              style={{ fontWeight: "bold" }}
+            >
+              Actions
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {displayedUsers.map((user) => (
             <TableRow
               key={user.id}
-              style={{ padding: "4px 8px", fontSize: "12px" }}
+              style={{
+                padding: "4px 8px",
+                fontSize: "12px",
+                backgroundColor: selectedRows.includes(user.id)
+                  ? "rgba(0, 0, 0, 0.1)"
+                  : "transparent",
+              }}
             >
               <TableCell padding="checkbox">
                 <Checkbox
@@ -124,8 +138,12 @@ const UserTable = ({
               </TableCell>
               {columns.map((column) => (
                 <TableCell
+                  className="user-table-cell name-cell"
                   key={column.field}
-                  style={{ padding: "4px 8px", fontSize: "12px" }}
+                  style={{
+                    padding: "4px 8px",
+                    fontSize: "12px",
+                  }}
                 >
                   {editingRowId === user.id && column.field !== "id" ? (
                     <TextField
@@ -141,7 +159,10 @@ const UserTable = ({
                   )}
                 </TableCell>
               ))}
-              <TableCell style={{ padding: "4px 8px", fontSize: "12px" }}>
+              <TableCell
+                className="user-table-cell name-cell"
+                style={{ padding: "4px 8px", fontSize: "12px" }}
+              >
                 {editingRowId === user.id ? (
                   <>
                     <IconButton onClick={() => handleSaveChanges(user)}>
